@@ -137,9 +137,6 @@ def get_fruit_load_list():
     #conn.execute("select * from fruit_load_list;")
     return my_cur.fetchall()
 
-#@streamlit.experimental_singleton
-def init_connection():
-    return psycopg2.connect(**streamlit.secrets["postgres"])
 
   
 streamlit.header("View Our Fruit List - Add Your Favorites!")
@@ -161,8 +158,7 @@ def insert_row_snowflake(new_fruit):
   
 add_my_fruit = streamlit.text_input('What fruit would you like to add?')
 if streamlit.button('Add a Fruit to the List'):
-  conn = init_connection()
-  #my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
+  my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
   back_from_function = insert_row_snowflake(add_my_fruit)
   conn.commit()
   conn.close()
