@@ -1,4 +1,4 @@
-'''import streamlit
+import streamlit
 import pandas
 import requests
 import snowflake.connector
@@ -78,7 +78,7 @@ if streamlit.button('Add a Fruit to the List'):
   back_from_function = insert_row_snowflake(add_my_fruit)
   conn.commit()
   conn.close()
-  streamlit.text(back_from_function)'''
+  streamlit.text(back_from_function)
 
 import streamlit
 import pandas
